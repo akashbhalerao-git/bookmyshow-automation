@@ -1,0 +1,276 @@
+﻿'TC1 checkingmobilenumber(Mobile_number)
+Function checkingmobilenumber()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+wait(3)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(3)
+Mobile_number = DataTable.Value("Mobile_number","Test Data")
+Browser(browserObject).Page(pageObject ).WebEdit(mobilenumberobject).Set Mobile_number
+wait(3)
+Browser(browserObject).Page(pageObject).WebButton(Continuebuttonobject).Click
+wait(3)
+res5 = DataTable.Value("Expected_Value","Test Data")
+res6 = Browser(browserObject).Page(pageObject).WebElement( numberobject).GetROProperty("text")
+If Strcomp(res5,res6) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res5,res6) = 0 Then
+checkingmobilenumber ="Pass"
+Else
+checkingmobilenumber ="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC2 Resend OTPGenrationcheck(Mobile_number)
+Function  ResendOTPGenrationcheck()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+wait(3)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(3)
+Mobile_number = DataTable.Value("Mobile_number","Test Data")
+Browser(browserObject).Page(pageObject ).WebEdit(mobilenumberobject).Set Mobile_number
+wait(3)
+Browser(browserObject).Page(pageObject).WebButton(Continuebuttonobject).Click
+wait(35)
+res2=Browser(browserObject).Page(pageObject).WebElement(resendotpObject ).GetROProperty("text")
+res1 = DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res1,res2) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res1,res2) = 0 Then
+ResendOTPGenrationcheck ="Pass"
+Else
+ResendOTPGenrationcheck = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+
+End Function
+
+'TC3 invalidmobilenomsg(MobileNo)
+Function invalidmobilenomsg()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(2)
+Browser(browserObject).Page(pageObject ).WebEdit(mobilenumberobject).Set MobileNo
+wait(2)
+Browser(browserObject).Page(pageObject).WebButton(Continuebuttonobject).Click
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(issuemessageObject).highlight
+res4=Browser(browserObject).Page(pageObject ).WebElement(issuemessageObject).GetROProperty("text")	
+res3 = DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res3,res4) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res3,res4) = 0 Then
+invalidmobilenomsg = "Pass"
+Else
+invalidmobilenomsg = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC4checking correctemail showing or not
+Function checkingcorrectemailshowingornot()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(emailobject).click
+wait(2)
+email = DataTable.Value("Input_Data","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(enteremailobject).Set email
+wait(2)
+Browser(browserObject).Page(pageObject).WebButton(continuebutton).Click	
+wait(2)
+Browser(browserObject).Page(pageObject).WebElement(emailmessageObject).highlight
+res7=Browser(browserObject).Page(pageObject).WebElement(emailmessageObject).GetROProperty("text")
+res20=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res20,res7) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res20,res7) = 0 Then
+checkingcorrectemailshowingornot ="Pass"
+Else
+checkingcorrectemailshowingornot ="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC5checking invalid message by puting invalidmail
+Function checkinginvalidmessagebyputinginvalidmail()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(emailobject).click
+wait(2)
+statement= DataTable.Value("Input_Data","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(enteremailobject).Set statement
+wait(5)
+Browser(browserObject).Page(pageObject).WebElement(errormessageObject).highlight
+Wait(5)
+res9=Browser(browserObject).Page(pageObject).WebElement(errormessageObject).GetROProperty("text")
+res8=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res8,res9) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res8,res9) = 0 Then
+checkinginvalidmessagebyputinginvalidmail="Pass"
+Else
+checkinginvalidmessagebyputinginvalidmail="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC6 invalid appleid login
+Function invalidappleidlogin()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(5)
+Browser(browserObject).Page(pageObject).WebElement( CwAppleObject).Click
+wait(5)
+appleid = DataTable.Value("Input_Data","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(AppleIDObject).Set appleid
+wait(5)
+Browser(browserObject).Page(pageObject).WebButton(appleidbuttonObj).Click
+wait(5)
+appleid = DataTable.Value("Input_Data","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit( applepasswordObj).Set appleid
+wait(5)
+Browser(browserObject).Page(pageObject).WebButton(applepasswordbuttonObject).Click
+wait(5)
+res11= Browser(browserObject).Page(pageObject).WebElement(appleerrormeassageObject).GetROProperty("text")
+res10 = DataTable.Value("Expected_Value","Test Data")
+If InStr(res10,res11) >= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If InStr(res10,res11) >= 0 Then
+invalidappleidlogin = "Pass"
+Else
+ invalidappleidlogin ="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC7 signin with google
+Function signinwithgoogle()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+wait(3)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject).WebElement(CwgoogleObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject).Sync
+wait(5)
+res13 = Browser(browserObject).Page(pageObject).WebElement(welcomemeassageObj).GetROProperty("text")
+res12 = DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res12,res13) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res12,res13) = 0 Then
+signinwithgoogle= "Pass"
+Else
+signinwithgoogle= "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End  Function
+
+'TC0 08 signout button working
+Function signoutbuttonworking()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+Browser(browserObject).Page(pageObject).WebElement( hiwelcomemeassageObj).Click
+Browser(browserObject).Page(pageObject).WebButton(signoutObject).Click
+res15=Browser(browserObject).Page(pageObject ).WebElement(signinObject).GetROProperty("text")
+res14 = DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res14,res15) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res14,res15) = 0 Then
+signoutbuttonworking ="Pass"
+Else
+signoutbuttonworking = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+'Tc09 successful corporate recive call back
+Function successfulcorporaterecivecallback()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+Browser(browserObject).Page(pageObject).Link(CorporatesObject).Click
+name = DataTable.Value("Name","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(nameObject).Set name
+email =DataTable.Value("Input_Data","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(CompanyEmailObject).Set email
+comapny_name =DataTable.Value("comapny_name","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(CompanyNameObject).Set comapny_name
+mobile_no = DataTable.Value("Mobile_number","Test Data")
+Browser(browserObject).Page(pageObject).WebNumber(MobilenoObject).Set mobile_no
+Browser(browserObject).Page(pageObject).WebButton(ReceiveCallback).Click
+wait(5)
+res17 = Browser(browserObject).Page(pageObject).WebElement(ResultstringObject).GetROProperty("text")
+res16 = DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res16,res17) = 0 Then
+Reporter.ReportEvent micPass," Corporates  " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Corporates ","Fail"
+End if	
+If Strcomp(res16,res17) = 0 Then
+successfulcorporaterecivecallback= "Pass"
+Else
+successfulcorporaterecivecallback = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+'TC010 invalid email message verification
+Function invalidemailmessageverification()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+Browser(browserObject).Page(pageObject).Link(CorporatesObject).Click
+wait(5)
+name = DataTable.Value("Name","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(CompanyEmailObject).Set name
+name = DataTable.Value("Name","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(nameObject).Set name
+res19 = Browser(browserObject).Page(pageObject).WebElement(invalidemailmsg).GetROProperty("text")
+res18 = DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res18,res19) = 0 Then
+Reporter.ReportEvent micPass," Corporates " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Corporates " , "Fail"
+End if
+If Strcomp(res18,res19) = 0 Then
+invalidemailmessageverification = "Pass"
+Else
+invalidemailmessageverification = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+

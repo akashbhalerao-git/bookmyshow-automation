@@ -1,0 +1,214 @@
+﻿Function TC011()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate (DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("Continue with mobile number").Set "8605506208"
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Continue").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("+91 8605506208").Highlight
+res21=Browser("Browser").Page("Movie Tickets, Plays,").WebElement("+91 8605506208").GetROProperty("text")
+If Strcomp(res5,res21) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res5,res6) = 0 Then
+TC011 ="Pass"
+Else
+TC011 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function 
+Function TC012()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate (DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("Continue with mobile number").Set "8605506208"
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Continue").Click
+wait(30)
+res22=Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Resend OTP").GetROProperty("text")
+If Strcomp(res1,res22) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res1,res22) = 0 Then
+TC012 ="Pass"
+Else
+TC012 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+Function  TC013()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate (DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("Continue with mobile number").Set "0000000000"
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Continue").Click
+res23=Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sorry, we are facing some").GetROProperty("text")
+print res23
+If Strcomp(res3,res23) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res3,res23) = 0 Then
+TC013 = "Pass"
+Else
+TC013 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+Function TC014()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate (DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Continue with Email").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("WebEdit_3").Set "testingbms9@gamil.com"
+wait(3)
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Continue").Click
+wait(3)
+res24 = Browser("Browser").Page("Movie Tickets, Plays,").WebElement("testingbms9@gamil.com").GetROProperty("text")
+If Strcomp(res20,res24) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res20,res24) = 0 Then
+TC014 ="Pass"
+Else
+TC014 ="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+Function TC015()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate (DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Continue with Email").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("WebEdit_3").Set "testingbms9"
+wait(3)
+res25 = Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Error message").GetROProperty("text")
+If Strcomp(res8,res25) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res8,res25) = 0 Then
+TC015 ="Pass"
+Else
+TC015 ="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"	
+End Function
+Function TC016()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate (DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Continue with Apple").Click
+wait(3)
+Browser("Browser").Page("Sign in with Apple ID").WebEdit("WebEdit").Set "akashbhalerao"
+wait(3)
+Browser("Browser").Page("Sign in with Apple ID").WebButton("Continue").Click
+wait(3)
+Browser("Browser").Page("Sign in with Apple ID").WebEdit("WebEdit_2").Set "akashbhalerao"
+Browser("Browser").Page("Sign in with Apple ID").WebButton("Sign In").Click
+res26 = Browser("Browser").Page("Sign in with Apple ID").WebElement("errMsg").GetROProperty("text")
+If InStr(res10,res26) >= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If InStr(res10,res11) >= 0 Then
+TC016= "Pass"
+Else
+TC016="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+Function TC017()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate (DataTable.Value("URL","Test Data"))
+wait(3)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject).WebElement(CwgoogleObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject).Sync
+wait(5)
+res13=Browser(browserObject).Page(pageObject).WebElement(welcomemeassageObj).GetROProperty("text")
+If Strcomp(res12,res13) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res12,res13) = 0 Then
+TC017 = "Pass"
+Else
+TC017= "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End  Function
+Function TC018()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate (DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Hi, Guest").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Sign out").Click
+wait(3)
+res28=Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").GetROProperty("text")
+If Strcomp(res14,res28) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res14,res28) = 0 Then
+TC018 ="Pass"
+Else
+TC018 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+Function TC019()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate (DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").Link("Corporates").Click
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Name").Set "Akash bhalerao"
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Company Email").Set email
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Company Name").Set "skyfall india pvt ltd"
+Browser("Browser").Page("Corporate Discount E Vouchers").WebNumber("eg: 91480XXXXX").Set "8421008118"
+Browser("Browser").Page("Corporate Discount E Vouchers").WebButton("Receive a callback").Click
+wait(3)
+res29 = Browser("Browser").Page("Corporate Discount E Vouchers").WebElement("Dear Akash bhalerao, Your").GetROProperty("text")
+If Strcomp(res16,res29) = 0 Then
+Reporter.ReportEvent micPass," Corporates  " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Corporates ","Fail"
+End if	
+If Strcomp(res16,res29) = 0 Then
+TC019 = "Pass"
+Else
+TC019 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+Function TC020()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate (DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").Link("Corporates").Click
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Company Email").Set "Akash bhalerao"
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Name").Set "Akash bhalerao"
+wait(3)
+res30 = Browser("Browser").Page("Corporate Discount E Vouchers").WebElement("Enter a valid Email").GetROProperty("text")
+If Strcomp(res18,res30) = 0 Then
+Reporter.ReportEvent micPass," Corporates " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Corporates " , "Fail"
+End if
+If Strcomp(res18,res30) = 0 Then
+TC020 = "Pass"
+Else
+TC020 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function

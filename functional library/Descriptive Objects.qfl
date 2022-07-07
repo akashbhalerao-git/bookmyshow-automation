@@ -1,0 +1,101 @@
+﻿
+
+
+Dim rea1,res3,res5,email,res6,res8,statement,appleid,res10,res12,res14,Mobile_number,MobileNo,res16,res17,res9,res11
+'Mobile_number="8605506208"
+'res1="Resend OTP"
+ MobileNo="0000000000"
+'res3="Sorry, we are facing some unexpected issues at our end. Please try again after sometime - 01a01b13"
+'res5="+91 8605506208"
+'email="testingbms9@gamil.com"
+'res20="testingbms9@gamil.com"
+'res8="Invalid Email"
+'statement="testingbms9"
+'appleid="akashbhalerao"
+'res10="Your Apple ID or password was incorrect. Forgot password?Opens in a new window. "
+'res12="Hi, Guest"
+'res14="Sign in"
+'name="Akash bhalerao"
+'comapny_name="skyfall india pvt ltd"
+'mobile_no="8605506208"
+'res16="Dear Akash bhalerao, Your request was received!"
+'res18="Enter a valid Email"
+Set browserObject = Description.Create
+browserObject("creationtime").value ="0"
+
+Set pageObject = Description.Create
+pageObject("micclass").value ="Page"
+
+Set signinObject = Description.Create
+signinObject ("xpath").value ="//DIV/DIV/DIV[normalize-space()='Sign in']"
+
+Set mobilenumberobject = Description.Create
+mobilenumberobject ("class").value ="sc-bwCtUz iQoMfg"
+
+Set Continuebuttonobject= Description.Create
+Continuebuttonobject ("xpath").value ="//DIV/FORM/DIV/BUTTON[normalize-space()='Continue']"
+
+Set issuemessageObject = Description.Create
+ issuemessageObject  ("xpath").value ="//DIV[2]/FORM[1]/DIV[1]/DIV[4]/DIV[1]"
+ 
+ Set resendotpObject = Description.Create
+ resendotpObject   ("xpath").value ="//DIV/DIV/SPAN/SPAN[normalize-space()='Resend OTP']"
+ 
+ Set numberobject = Description.Create
+ numberobject  ("xpath").value ="//DIV/DIV/SPAN[normalize-space()='+91 8605506208']"
+ 
+ Set emailobject = Description.Create
+ emailobject  ("xpath").value =" //DIV[normalize-space()='Continue with Email']/DIV[1]/DIV[1]"
+ 
+  Set enteremailobject= Description.Create
+ enteremailobject ("xpath").value ="//INPUT[@id='emailId']"
+  
+  Set continuebutton= Description.Create
+continuebutton ("xpath").value ="//DIV/FORM/DIV/BUTTON[normalize-space()='Continue']"
+
+Set emailmessageObject= Description.Create
+emailmessageObject ("xpath").value ="//DIV[1]/DIV[2]/SPAN[1]"
+
+Set errormessageObject= Description.Create
+errormessageObject ("xpath").value ="//DIV[@id='Error message']"
+
+Set CwgoogleObject = Description.Create
+CwgoogleObject ("xpath").value ="//DIV[normalize-space()='Continue with Google']/DIV[1]/DIV[1]"
+
+Set CwAppleObject = Description.Create
+CwAppleObject ("xpath").value ="//DIV[normalize-space()='Continue with Apple']/DIV[1]/DIV[1]"
+Set AppleIDObject = Description.Create
+AppleIDObject ("xpath").value ="//INPUT[@id='account_name_text_field']"
+Set appleidbuttonObj = Description.Create
+appleidbuttonObj ("xpath").value ="//BUTTON[@id='sign-in']"
+Set applepasswordObj = Description.Create
+ applepasswordObj ("xpath").value ="//INPUT[@id='password_text_field']"
+Set applepasswordbuttonObject= Description.Create
+applepasswordbuttonObject ("xpath").value ="//BUTTON[@id='sign-in']"
+Set appleerrormeassageObject= Description.Create
+ appleerrormeassageObject ("xpath").value ="//DIV[@id='signin']/DIV[1]/DIV[2]/DIV[1]"
+Set welcomemeassageObj= Description.Create
+ welcomemeassageObj ("xpath").value ="//DIV/DIV/SPAN[normalize-space()='Hi, Guest']"
+Set hiwelcomemeassageObj= Description.Create
+ hiwelcomemeassageObj ("xpath").value ="//DIV/DIV/SPAN[normalize-space()='Hi, Guest']"
+Set signoutObject= Description.Create
+signoutObject ("xpath").value ="//DIV/BUTTON[normalize-space()='Sign out']"
+
+Set CorporatesObject= Description.Create
+CorporatesObject ("xpath").value ="//DIV/DIV/A[normalize-space()='Corporates']"
+Set nameObject= Description.Create
+nameObject ("xpath").value ="//INPUT[@id='name']"
+Set CompanyEmailObject= Description.Create
+CompanyEmailObject ("xpath").value ="//INPUT[@id='email']"
+Set CompanyNameObject= Description.Create
+CompanyNameObject ("xpath").value ="//INPUT[@id='company_name']"
+Set MobilenoObject= Description.Create
+MobilenoObject ("xpath").value ="//INPUT[@id='mobile_number']"
+Set ReceiveCallback= Description.Create
+ReceiveCallback ("xpath").value ="//DIV[@id='voucherForm']/DIV/DIV/FORM/BUTTON[normalize-space()='Receive a callback']"
+Set ResultstringObject= Description.Create
+ResultstringObject ("xpath").value ="//DIV[@id='voucherForm']/DIV[1]/DIV[1]/DIV[1]"
+
+Set invalidemailmsg= Description.Create
+invalidemailmsg ("xpath").value ="//DIV/DIV/DIV/DIV[normalize-space()='Enter a valid Email']/DIV[1]"
+

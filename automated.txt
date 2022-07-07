@@ -1,0 +1,695 @@
+Function executeTest(testCaseID)
+    Select Case testCaseID
+        Case "TC_001"
+            services.StartTransaction "TC_001"
+                  Environment.Value("Result") = checkingmobilenumber()
+            services.EndTransaction "TC_001"
+            
+        Case "TC_002"
+            services.StartTransaction "TC_002"
+             Environment.Value("Result") = ResendOTPGenrationcheck()
+            services.EndTransaction "TC_002"
+        
+        Case "TC_003"
+            services.StartTransaction "TC_003"
+              Environment.Value("Result") = invalidmobilenomsg()
+            services.EndTransaction "TC_003"
+            
+        Case "TC_004"
+            services.StartTransaction "TC_004"
+            Environment.Value("Result") = checkingcorrectemailshowingornot()
+            services.EndTransaction "TC_004"
+            
+        Case "TC_005"
+            services.StartTransaction "TC_005"
+       Environment.Value("Result") = checkinginvalidmessagebyputinginvalidmail()
+            services.EndTransaction "TC_005"
+           
+       Case "TC_006"
+            services.StartTransaction "TC_006"
+             Environment.Value("Result") = invalidappleidlogin()
+            services.EndTransaction "TC_006" 
+            
+       Case "TC_007"
+            services.StartTransaction "TC_007"
+            Environment.Value("Result") = signinwithgoogle()
+            services.EndTransaction "TC_007"       
+       
+       Case "TC_008"
+            services.StartTransaction "TC_008"
+             Environment.Value("Result") = signoutbuttonworking()
+            services.EndTransaction "TC_008"      
+       
+       Case "TC_009"
+            services.StartTransaction "TC_009"
+             Environment.Value("Result") = successfulcorporaterecivecallback()
+            services.EndTransaction "TC_009" 
+     
+     Case "TC_010"
+             services.StartTransaction "TC_010"
+              Environment.Value("Result") = invalidemailmessageverification()
+             services.StartTransaction "TC_010"
+     
+     Case "TC_011"
+            services.StartTransaction "TC_011"
+              Environment.Value("Result") =TC011()
+            services.EndTransaction "TC_011"
+        
+     Case "TC_012"
+            services.StartTransaction "TC_012"
+              Environment.Value("Result") =TC012()
+            services.EndTransaction "TC_012"
+            
+        Case "TC_013"
+            services.StartTransaction "TC_013"
+              Environment.Value("Result") =TC013()
+            services.EndTransaction "TC_013"
+            
+        Case "TC_014"
+            services.StartTransaction "TC_014"
+              Environment.Value("Result") = TC014()
+            services.EndTransaction "TC_014"
+           
+       Case "TC_015"
+            services.StartTransaction "TC_015"
+              Environment.Value("Result") = TC015()
+            services.EndTransaction "TC_015" 
+            
+       Case "TC_016"
+            services.StartTransaction "TC_016"
+              Environment.Value("Result") = TC016()
+            services.EndTransaction "TC_016"       
+       
+       Case "TC_017"
+            services.StartTransaction "TC_017"
+              Environment.Value("Result") = TC017()
+            services.EndTransaction "TC_017"      
+       
+       Case "TC_018"
+            services.StartTransaction "TC_018"
+               Environment.Value("Result") = TC018()
+            services.EndTransaction "TC_018" 
+     
+     Case "TC_019"
+            services.StartTransaction "TC_019"
+              Environment.Value("Result") = TC019()
+            services.EndTransaction "TC_019"
+            
+      Case "TC_020"
+            services.StartTransaction "TC_020"
+                 Environment.Value("Result") = TC020()
+            services.EndTransaction "TC_020"      
+        Case else
+             msgbox("wrong test case no")        
+    End Select
+End Function
+Dim rea1,res3,res5,email,res6,res8,statement,appleid,res10,res12,res14,Mobile_number,MobileNo,res16,res17,res9,res11
+Mobile_number="8605506208"
+res1="Resend OTP"
+ MobileNo="0000000000"
+res3="Sorry, we are facing some unexpected issues at our end. Please try again after sometime - 01a01b13"
+res5="+91 8605506208"
+email="testingbms9@gamil.com"
+res20="testingbms9@gamil.com"
+res8="Invalid Email"
+statement="testingbms9"
+appleid="akashbhalerao"
+res10="Your Apple ID or password was incorrect. Forgot password?Opens in a new window. "
+res12="Hi, Guest"
+res14="Sign in"
+name="Akash bhalerao"
+comapny_name="skyfall india pvt ltd"
+mobile_no="8605506208"
+res16="Dear Akash bhalerao, Your request was received!"
+res18="Enter a valid Email"
+Set browserObject = Description.Create
+browserObject("creationtime").value ="0"
+
+Set pageObject = Description.Create
+pageObject("micclass").value ="Page"
+
+Set signinObject = Description.Create
+signinObject ("xpath").value ="//DIV/DIV/DIV[normalize-space()='Sign in']"
+
+Set mobilenumberobject = Description.Create
+mobilenumberobject ("class").value ="sc-bwCtUz iQoMfg"
+
+Set Continuebuttonobject= Description.Create
+Continuebuttonobject ("xpath").value ="//DIV/FORM/DIV/BUTTON[normalize-space()='Continue']"
+
+Set issuemessageObject = Description.Create
+ issuemessageObject  ("xpath").value ="//DIV[2]/FORM[1]/DIV[1]/DIV[4]/DIV[1]"
+ 
+ Set resendotpObject = Description.Create
+ resendotpObject   ("xpath").value ="//DIV/DIV/SPAN/SPAN[normalize-space()='Resend OTP']"
+ 
+ Set numberobject = Description.Create
+ numberobject  ("xpath").value ="//DIV/DIV/SPAN[normalize-space()='+91 8605506208']"
+ 
+ Set emailobject = Description.Create
+ emailobject  ("xpath").value =" //DIV[normalize-space()='Continue with Email']/DIV[1]/DIV[1]"
+ 
+  Set enteremailobject= Description.Create
+ enteremailobject ("xpath").value ="//INPUT[@id='emailId']"
+  
+  Set continuebutton= Description.Create
+continuebutton ("xpath").value ="//DIV/FORM/DIV/BUTTON[normalize-space()='Continue']"
+
+Set emailmessageObject= Description.Create
+emailmessageObject ("xpath").value ="//DIV[1]/DIV[2]/SPAN[1]"
+
+Set errormessageObject= Description.Create
+errormessageObject ("xpath").value ="//DIV[@id='Error message']"
+
+Set CwgoogleObject = Description.Create
+CwgoogleObject ("xpath").value ="//DIV[normalize-space()='Continue with Google']/DIV[1]/DIV[1]"
+
+Set CwAppleObject = Description.Create
+CwAppleObject ("xpath").value ="//DIV[normalize-space()='Continue with Apple']/DIV[1]/DIV[1]"
+Set AppleIDObject = Description.Create
+AppleIDObject ("xpath").value ="//INPUT[@id='account_name_text_field']"
+Set appleidbuttonObj = Description.Create
+appleidbuttonObj ("xpath").value ="//BUTTON[@id='sign-in']"
+Set applepasswordObj = Description.Create
+ applepasswordObj ("xpath").value ="//INPUT[@id='password_text_field']"
+Set applepasswordbuttonObject= Description.Create
+applepasswordbuttonObject ("xpath").value ="//BUTTON[@id='sign-in']"
+Set appleerrormeassageObject= Description.Create
+ appleerrormeassageObject ("xpath").value ="//DIV[@id='signin']/DIV[1]/DIV[2]/DIV[1]"
+Set welcomemeassageObj= Description.Create
+ welcomemeassageObj ("xpath").value ="//DIV/DIV/SPAN[normalize-space()='Hi, Guest']"
+Set hiwelcomemeassageObj= Description.Create
+ hiwelcomemeassageObj ("xpath").value ="//DIV/DIV/SPAN[normalize-space()='Hi, Guest']"
+Set signoutObject= Description.Create
+signoutObject ("xpath").value ="//DIV/BUTTON[normalize-space()='Sign out']"
+
+Set CorporatesObject= Description.Create
+CorporatesObject ("xpath").value ="//DIV/DIV/A[normalize-space()='Corporates']"
+Set nameObject= Description.Create
+nameObject ("xpath").value ="//INPUT[@id='name']"
+Set CompanyEmailObject= Description.Create
+CompanyEmailObject ("xpath").value ="//INPUT[@id='email']"
+Set CompanyNameObject= Description.Create
+CompanyNameObject ("xpath").value ="//INPUT[@id='company_name']"
+Set MobilenoObject= Description.Create
+MobilenoObject ("xpath").value ="//INPUT[@id='mobile_number']"
+Set ReceiveCallback= Description.Create
+ReceiveCallback ("xpath").value ="//DIV[@id='voucherForm']/DIV/DIV/FORM/BUTTON[normalize-space()='Receive a callback']"
+Set ResultstringObject= Description.Create
+ResultstringObject ("xpath").value ="//DIV[@id='voucherForm']/DIV[1]/DIV[1]/DIV[1]"
+
+Set invalidemailmsg= Description.Create
+invalidemailmsg ("xpath").value ="//DIV/DIV/DIV/DIV[normalize-space()='Enter a valid Email']/DIV[1]"
+Function TC011()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate "https://in.bookmyshow.com/explore/home/nashik"
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("Continue with mobile number").Set "8605506208"
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Continue").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("+91 8605506208").Highlight
+res21=Browser("Browser").Page("Movie Tickets, Plays,").WebElement("+91 8605506208").GetROProperty("text")
+If Strcomp(res5,res21) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res5,res6) = 0 Then
+TC011 ="Pass"
+Else
+TC011 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function 
+Function TC012()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate "https://in.bookmyshow.com/explore/home/nashik"
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("Continue with mobile number").Set "8605506208"
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Continue").Click
+wait(30)
+res22=Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Resend OTP").GetROProperty("text")
+If Strcomp(res1,res22) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res1,res22) = 0 Then
+TC012 ="Pass"
+Else
+TC012 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+Function  TC013()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate "https://in.bookmyshow.com/explore/home/nashik"
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("Continue with mobile number").Set "0000000000"
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Continue").Click
+res23=Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sorry, we are facing some").GetROProperty("text")
+print res23
+If Strcomp(res3,res23) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res3,res23) = 0 Then
+TC013 = "Pass"
+Else
+TC013 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+Function TC014()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate "https://in.bookmyshow.com/explore/home/nashik"
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Continue with Email").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("WebEdit_3").Set "testingbms9@gamil.com"
+wait(3)
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Continue").Click
+wait(3)
+res24 = Browser("Browser").Page("Movie Tickets, Plays,").WebElement("testingbms9@gamil.com").GetROProperty("text")
+If Strcomp(res20,res24) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res20,res24) = 0 Then
+TC014 ="Pass"
+Else
+TC014 ="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+Function TC015()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate "https://in.bookmyshow.com/explore/home/nashik"
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Continue with Email").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebEdit("WebEdit_3").Set "testingbms9"
+wait(3)
+res25 = Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Error message").GetROProperty("text")
+If Strcomp(res8,res25) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res8,res25) = 0 Then
+TC015 ="Pass"
+Else
+TC015 ="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"	
+End Function
+Function TC016()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate "https://in.bookmyshow.com/explore/home/nashik"
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Continue with Apple").Click
+wait(3)
+Browser("Browser").Page("Sign in with Apple ID").WebEdit("WebEdit").Set "akashbhalerao"
+wait(3)
+Browser("Browser").Page("Sign in with Apple ID").WebButton("Continue").Click
+wait(3)
+Browser("Browser").Page("Sign in with Apple ID").WebEdit("WebEdit_2").Set "akashbhalerao"
+Browser("Browser").Page("Sign in with Apple ID").WebButton("Sign In").Click
+res26 = Browser("Browser").Page("Sign in with Apple ID").WebElement("errMsg").GetROProperty("text")
+If InStr(res10,res26) >= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If InStr(res10,res11) >= 0 Then
+TC016= "Pass"
+Else
+TC016="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+Function TC017()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate"https://in.bookmyshow.com/explore/home/mumbai"
+wait(3)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject).WebElement(CwgoogleObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject).Sync
+wait(5)
+res13=Browser(browserObject).Page(pageObject).WebElement(welcomemeassageObj).GetROProperty("text")
+If Strcomp(res12,res13) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res12,res13) = 0 Then
+TC017 = "Pass"
+Else
+TC017= "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End  Function
+Function TC018()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate "https://in.bookmyshow.com/explore/home/nashik"
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Hi, Guest").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebButton("Sign out").Click
+wait(3)
+res28=Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Sign in").GetROProperty("text")
+If Strcomp(res14,res28) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res14,res28) = 0 Then
+TC018 ="Pass"
+Else
+TC018 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+Function TC019()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate "https://in.bookmyshow.com/explore/home/nashik"
+Browser("Browser").Page("Movie Tickets, Plays,").Link("Corporates").Click
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Name").Set "Akash bhalerao"
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Company Email").Set "akashbhalerao828@gmail.com"
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Company Name").Set "skyfall india pvt ltd"
+Browser("Browser").Page("Corporate Discount E Vouchers").WebNumber("eg: 91480XXXXX").Set "8421008118"
+Browser("Browser").Page("Corporate Discount E Vouchers").WebButton("Receive a callback").Click
+wait(3)
+res29 = Browser("Browser").Page("Corporate Discount E Vouchers").WebElement("Dear Akash bhalerao, Your").GetROProperty("text")
+If Strcomp(res16,res29) = 0 Then
+Reporter.ReportEvent micPass," Corporates  " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Corporates ","Fail"
+End if	
+If Strcomp(res16,res29) = 0 Then
+TC019 = "Pass"
+Else
+TC019 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+Function TC020()
+SystemUtil.Run"Chrome.exe"
+Browser("Browser").Navigate "https://in.bookmyshow.com/explore/home/nashik"
+Browser("Browser").Page("Movie Tickets, Plays,").Link("Corporates").Click
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Company Email").Set "Akash bhalerao"
+Browser("Browser").Page("Corporate Discount E Vouchers").WebEdit("Name").Set "Akash bhalerao"
+wait(3)
+res30 = Browser("Browser").Page("Corporate Discount E Vouchers").WebElement("Enter a valid Email").GetROProperty("text")
+If Strcomp(res18,res30) = 0 Then
+Reporter.ReportEvent micPass," Corporates " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Corporates " , "Fail"
+End if
+If Strcomp(res18,res30) = 0 Then
+TC020 = "Pass"
+Else
+TC020 = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+'TC1 checkingmobilenumber(Mobile_number)
+Function checkingmobilenumber()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate "https://in.bookmyshow.com/explore/home/nashik"
+wait(3)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject ).WebEdit(mobilenumberobject).Set Mobile_number
+wait(3)
+Browser(browserObject).Page(pageObject).WebButton(Continuebuttonobject).Click
+wait(3)
+res6=Browser(browserObject).Page(pageObject).WebElement( numberobject).GetROProperty("text")
+If Strcomp(res5,res6) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res5,res6) = 0 Then
+checkingmobilenumber="Pass"
+Else
+checkingmobilenumber "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC2 Resend OTPGenrationcheck(Mobile_number)
+Function  ResendOTPGenrationcheck()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate "https://in.bookmyshow.com/explore/home/nashik"
+wait(3)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject ).WebEdit(mobilenumberobject).Set Mobile_number
+wait(3)
+Browser(browserObject).Page(pageObject).WebButton(Continuebuttonobject).Click
+wait(35)
+res2=Browser(browserObject).Page(pageObject).WebElement(resendotpObject ).GetROProperty("text")
+print res2
+If Strcomp(res1,res2) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res1,res2) = 0 Then
+ResendOTPGenrationcheck ="Pass"
+Else
+ResendOTPGenrationcheck = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+
+End Function
+
+'TC3 invalidmobilenomsg(MobileNo)
+Function invalidmobilenomsg()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate "https://in.bookmyshow.com/explore/home/nashik"
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(2)
+Browser(browserObject).Page(pageObject ).WebEdit(mobilenumberobject).Set MobileNo
+wait(2)
+Browser(browserObject).Page(pageObject).WebButton(Continuebuttonobject).Click
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(issuemessageObject).highlight
+res4=Browser(browserObject).Page(pageObject ).WebElement(issuemessageObject).GetROProperty("text")	
+print res4
+If Strcomp(res3,res4) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res3,res4) = 0 Then
+invalidmobilenomsg = "Pass"
+Else
+invalidmobilenomsg = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC4checking correctemail showing or not
+Function checkingcorrectemailshowingornot()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate "https://in.bookmyshow.com/explore/home/mumbai"
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(emailobject).click
+wait(2)
+Browser(browserObject).Page(pageObject).WebEdit(enteremailobject).Set email
+wait(2)
+Browser(browserObject).Page(pageObject).WebButton(continuebutton).Click	
+wait(2)
+Browser(browserObject).Page(pageObject).WebElement(emailmessageObject).highlight
+res7=Browser(browserObject).Page(pageObject).WebElement(emailmessageObject).GetROProperty("text")
+If Strcomp(res20,res7) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res20,res7) = 0 Then
+checkingcorrectemailshowingornot ="Pass"
+Else
+checkingcorrectemailshowingornot ="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC5checking invalid message by puting invalidmail
+Function checkinginvalidmessagebyputinginvalidmail()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate "https://in.bookmyshow.com/explore/home/mumbai"
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(emailobject).click
+wait(2)
+Browser(browserObject).Page(pageObject).WebEdit(enteremailobject).Set statement
+wait(5)
+Browser(browserObject).Page(pageObject).WebElement(errormessageObject).highlight
+Wait(5)
+res9=Browser(browserObject).Page(pageObject).WebElement(errormessageObject).GetROProperty("text")
+If Strcomp(res8,res9) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res8,res9) = 0 Then
+checkinginvalidmessagebyputinginvalidmail="Pass"
+Else
+checkinginvalidmessagebyputinginvalidmail="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC6 invalid appleid login
+Function invalidappleidlogin()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate "https://in.bookmyshow.com/explore/home/mumbai"
+wait(2)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(5)
+Browser(browserObject).Page(pageObject).WebElement( CwAppleObject).Click
+wait(5)
+Browser(browserObject).Page(pageObject).WebEdit(AppleIDObject).Set appleid
+wait(5)
+Browser(browserObject).Page(pageObject).WebButton(appleidbuttonObj).Click
+wait(5)
+Browser(browserObject).Page(pageObject).WebEdit( applepasswordObj).Set appleid
+wait(5)
+Browser(browserObject).Page(pageObject).WebButton(applepasswordbuttonObject).Click
+wait(5)
+res11=Browser(browserObject).Page(pageObject).WebElement(appleerrormeassageObject).GetROProperty("text")
+If InStr(res10,res11) >= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If InStr(res10,res11) >= 0 Then
+invalidappleidlogin = "Pass"
+Else
+ invalidappleidlogin ="Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'TC7 signin with google
+Function signinwithgoogle()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate"https://in.bookmyshow.com/explore/home/mumbai"
+wait(3)
+Browser(browserObject).Page(pageObject ).WebElement(signinObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject).WebElement(CwgoogleObject).Click
+wait(3)
+Browser(browserObject).Page(pageObject).Sync
+wait(5)
+res13=Browser(browserObject).Page(pageObject).WebElement(welcomemeassageObj).GetROProperty("text")
+If Strcomp(res12,res13) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res12,res13) = 0 Then
+signinwithgoogle= "Pass"
+Else
+signinwithgoogle= "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End  Function
+
+'TC0 08 signout button working
+Function signoutbuttonworking()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate"https://in.bookmyshow.com/explore/home/mumbai"
+Browser(browserObject).Page(pageObject).WebElement( hiwelcomemeassageObj).Click
+Browser(browserObject).Page(pageObject).WebButton(signoutObject).Click
+res15=Browser(browserObject).Page(pageObject ).WebElement(signinObject).GetROProperty("text")
+If Strcomp(res14,res15) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res14,res15) = 0 Then
+signoutbuttonworking ="Pass"
+Else
+signoutbuttonworking = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+'Tc09 successful corporate recive call back
+Function successfulcorporaterecivecallback()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate"https://in.bookmyshow.com/explore/home/mumbai"
+Browser(browserObject).Page(pageObject).Link(CorporatesObject).Click
+Browser(browserObject).Page(pageObject).WebEdit(nameObject).Set name
+Browser(browserObject).Page(pageObject).WebEdit(CompanyEmailObject).Set email
+Browser(browserObject).Page(pageObject).WebEdit(CompanyNameObject).Set comapny_name
+Browser(browserObject).Page(pageObject).WebNumber(MobilenoObject).Set mobile_no
+Browser(browserObject).Page(pageObject).WebButton(ReceiveCallback).Click
+wait(5)
+res17=Browser(browserObject).Page(pageObject).WebElement(ResultstringObject).GetROProperty("text")
+If Strcomp(res16,res17) = 0 Then
+Reporter.ReportEvent micPass," Corporates  " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Corporates ","Fail"
+End if	
+If Strcomp(res16,res17) = 0 Then
+successfulcorporaterecivecallback= "Pass"
+Else
+successfulcorporaterecivecallback = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+'TC010 invalid email message verification
+Function invalidemailmessageverification()
+SystemUtil.Run"Chrome.exe"
+Browser(browserObject).Navigate"https://in.bookmyshow.com/explore/home/mumbai"
+Browser(browserObject).Page(pageObject).Link(CorporatesObject).Click
+wait(5)
+Browser(browserObject).Page(pageObject).WebEdit(CompanyEmailObject).Set name
+Browser(browserObject).Page(pageObject).WebEdit(nameObject).Set name
+res19=Browser(browserObject).Page(pageObject).WebElement(invalidemailmsg).GetROProperty("text")
+If Strcomp(res18,res19) = 0 Then
+Reporter.ReportEvent micPass," Corporates " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Corporates " , "Fail"
+End if
+If Strcomp(res18,res19) = 0 Then
+invalidemailmessageverification = "Pass"
+Else
+invalidemailmessageverification = "Fail"
+End if
+Systemutil.CloseProcessByName"chrome.exe"
+End Function
+
+'executeTest("TC_012")
+On Error Resume Next
+Dim path
+path="C:\Users\user259\Documents\BookMyshow\Test data\Test Data.xlsx"
+DataTable.AddSheet "Test Data"
+DataTable.ImportSheet path,"BMS","Test Data"
+
+rowCount = DataTable.GetSheet("Test Data").GetRowCount
+
+For rows = 1 To rowCount
+
+DataTable.SetCurrentRow rows
+
+If DataTable.Value("Expected_Value","Test Data")="Y" Then
+executeTest (DataTable.Value("testCaseID","Test Data"))
+DataTable.Value("Result","Test Data") = Environment.Value("Result")
+End If
+
+Next
+
+DataTable.ExportSheet path,"Test Data","BMS"
+
+
+
